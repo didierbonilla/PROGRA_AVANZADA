@@ -64,6 +64,10 @@ public class MainController implements Initializable {
     @FXML
     private Button btnNuevo;
 
+    @FXML
+    private Button btnEliminar;
+
+
     public void logout() throws IOException {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Deseas cerrar sesion?");
@@ -180,6 +184,23 @@ public class MainController implements Initializable {
         this.limpiarFormulario();
     }
 
+    public void eliminarUsuario() {
+        UserModel user = tblUsuarios.getSelectionModel().getSelectedItem();
+        int index = tblUsuarios.getSelectionModel().getSelectedIndex();
+
+        if((index - 1) < -1){return;}
+
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Eliminar Usuario");
+        alert.setHeaderText("Estas Seguro de eliminar el usuario ["+user.getUsuario()+"]?\nEsta accion sera irreversible");
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if(result.get().equals(ButtonType.OK)){
+            UserRepository.deleteUser(user.getUsuario());
+            this.limpiarFormulario();
+            this.cargarUsuarios();
+        }
+    }
     public void actualizarUsuario(){
         UserModel user = new UserModel(
             txtUsuario.getText(),

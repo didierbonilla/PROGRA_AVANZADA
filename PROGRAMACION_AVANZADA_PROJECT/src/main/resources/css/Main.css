@@ -23,6 +23,16 @@
     -fx-background-color: #18a383;
 }
 
+.delete-button{
+    -fx-background-color: #a31818;
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+}
+
+.delete-button:hover{
+    -fx-background-color: #c80e2e;
+}
+
 .shadow{
     -fx-effect: dropshadow(three-pass-box,rgba(0,0,0,0.5),6,0,0,0);
 }

@@ -54,6 +54,7 @@ public class UserRepository {
         for (UserModel user : users) {
             if (user.getUsuario().equals(usuario)) {
                 user.setNombre(data.getNombre());
+                user.setPassword(data.getPassword());
                 user.setRol(data.getRol());
                 user.setEmail(data.getEmail());
                 user.setTelefono(data.getTelefono());
